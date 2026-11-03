@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { json } from "stream/consumers";
+import { useMutation } from "@tanstack/react-query";
+
+
 
 
 
@@ -17,15 +21,23 @@ const handleChange =(e:React.ChangeEvent<HTMLInputElement>)=>{
     setForm({...Form,[e.target.name]: e.target.value})
 
 }
-const handelSubmit =(e:React.FormEvent)=>{
+const mutation = useMutation({
+  mutationFn: async (data: typeof Form) => {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+});
+const handelSubmit = async (e:React.FormEvent)=>{
     e.preventDefault();
-     
-}
- 
- 
- 
- 
- 
+    mutation.mutate(Form);
+    }
+        
+
+
  
  
  
