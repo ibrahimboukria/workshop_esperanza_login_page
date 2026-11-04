@@ -87,6 +87,9 @@ export default function Login() {
           <div className="flex flex-col w-full max-w-md mx-auto gap-5 ml-4">
             <form onSubmit={handelSubmit} className="flex flex-col gap-5">
 
+              
+              
+              
               <div className="flex flex-col gap-2">
                 <label htmlFor="firstName" className="text-sm font-medium text-gray-700">
                   First name
@@ -97,12 +100,16 @@ export default function Login() {
                     id="firstName"
                     name="firstName"
                     type="text"
+                    required
                     onChange={handleChange}
                     className={inputClass}
                   />
                 </div>
               </div>
 
+              
+              
+              
               <div className="flex flex-col gap-2">
                 <label htmlFor="lastName" className="text-sm font-medium text-gray-700">
                   Last name
@@ -113,12 +120,17 @@ export default function Login() {
                     id="lastName"
                     name="lastName"
                     type="text"
+                    required
                     onChange={handleChange}
                     className={inputClass}
                   />
                 </div>
               </div>
 
+              
+              
+              
+              
               <div className="flex flex-col gap-2">
                 <label htmlFor="email" className="text-sm font-medium text-gray-700">
                   Email
@@ -129,12 +141,17 @@ export default function Login() {
                     id="email"
                     name="email"
                     type="email"
+                    required
                     onChange={handleChange}
                     className={inputClass}
                   />
                 </div>
               </div>
 
+              
+              
+              
+              
               <div className="flex flex-col gap-2">
                 <label htmlFor="motivation" className="text-sm font-medium text-gray-700">
                   Motivation (optional)
@@ -151,6 +168,9 @@ export default function Login() {
                 </div>
               </div>
 
+             
+              
+              
               <button
                 type="submit"
                 className="group w-full h-[44px] mt-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
@@ -159,9 +179,25 @@ export default function Login() {
                 <Send className="w-[18px] h-[18px] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:rotate-12" />
               </button>
 
-              {mutation.isPending && <p>Sending...</p>}
-              {mutation.isSuccess && <p>You are registered</p>}
-              {mutation.isError && <p>Something went wrong</p>}
+  {mutation.isPending && (
+  <div className="flex items-center gap-2 rounded-lg bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 font-medium">
+    <Loader2 className="w-5 h-5 animate-spin" />
+    Sending...
+  </div>
+)}
+{mutation.isSuccess && (
+  <div className="flex items-center gap-2 rounded-lg bg-green-50 border border-green-300 text-green-700 px-4 py-3 font-semibold">
+    <CheckCircle2 className="w-5 h-5" />
+    You are registered
+  </div>
+)}
+{
+  mutation.isError && (
+  <div className="flex items-center gap-2 rounded-lg bg-red-50 border border-red-300 text-red-700 px-4 py-3 font-semibold">
+    <AlertCircle className="w-5 h-5" />
+    Something went wrong
+  </div>
+)}
             </form>
           </div>
         </section>
