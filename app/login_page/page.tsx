@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react";
+import Image from "next/image";
 import { useMutation } from "@tanstack/react-query";
 import {
   PenTool,
@@ -76,8 +77,17 @@ export default function Login() {
             Create, collaborate, and bring your ideas to life. Sign in to access your workspace.
           </p>
           <p className="relative z-10 text-slate-300 text-base md:text-lg mt-5">Orgnazed by</p>
+           
+        <Image
+         src="/espiranza.png"alt="Esperanza Club"  width={128} height={128}
+       className="relative z-10 mt-3 w-32 h-auto"
+/>
+       
         </section>
 
+        
+        
+        
         <section className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col bg-white">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <Ticket className="animate-pop w-8 h-8 text-blue-600" />
