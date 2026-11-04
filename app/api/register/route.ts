@@ -1,10 +1,13 @@
+
 import { NextResponse } from "next/server";
-export  async function POST(request:Request){
+
+const registrations: any[] = [];
+
+export async function POST(request: Request) {
     const data = await request.json();
-    console.log(data);
-
-
-    
-    
-    return NextResponse.json({message : "Done"})
+    registrations.push(data);
+    console.log(registrations);
+    return NextResponse.json({ message: "Done" });
 }
+    
+    
